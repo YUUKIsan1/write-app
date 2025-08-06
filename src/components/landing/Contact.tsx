@@ -269,7 +269,9 @@ export default function Contact() {
                     <div className={`transition-transform duration-300 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`}>
-                      <Icons.ArrowRight className="w-5 h-5 text-white rotate-90" />
+                      <div className="w-5 h-5 text-white rotate-90">
+                        <Icons.ArrowRight />
+                      </div>
                     </div>
                   </button>
                   

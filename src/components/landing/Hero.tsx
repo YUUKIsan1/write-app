@@ -13,7 +13,7 @@ interface HeroProps {
 }
 
 export default function Hero({ className }: HeroProps) {
-  const { elementRef, isIntersecting } = useIntersectionObserver()
+  const { isIntersecting } = useIntersectionObserver()
   const [scrollY, setScrollY] = useState(0)
   const heroRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)

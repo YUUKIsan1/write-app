@@ -205,7 +205,9 @@ export default function Pricing() {
                           }`}
                           style={{ transitionDelay: `${featureIndex * 50}ms` }}
                         >
-                          <Icons.Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5">
+                            <Icons.Check />
+                          </div>
                           <span className="text-gray-200">{feature}</span>
                         </div>
                       ))}

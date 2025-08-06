@@ -324,7 +324,9 @@ export default function FeaturesDetailed({ className }: FeaturesDetailedProps) {
               <button className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl text-xl font-bold text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative flex items-center">
-                  <Icons.Rocket className="mr-3" />
+                  <div className="mr-3">
+                    <Icons.Rocket />
+                  </div>
                   今すぐ無料で革命を体験
                   <div className="ml-3 w-2 h-2 bg-white rounded-full animate-pulse"></div>
                 </div>

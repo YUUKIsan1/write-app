@@ -77,7 +77,9 @@ export default function DetailedFeature({
               style={{ transitionDelay: `${400 + index * 100}ms` }}
             >
               <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${gradient} flex items-center justify-center flex-shrink-0 mt-1`}>
-                <Icons.Check className="w-3 h-3 text-white" />
+                <div className="w-3 h-3 text-white">
+                  <Icons.Check />
+                </div>
               </div>
               <span className="text-gray-200 text-lg leading-relaxed">{benefit}</span>
             </div>
@@ -130,7 +132,7 @@ export default function DetailedFeature({
             style={{ transitionDelay: '1000ms' }}
           >
             <p className="text-gray-200 italic mb-4 leading-relaxed">
-              "{testimonial.text}"
+              &ldquo;{testimonial.text}&rdquo;
             </p>
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">

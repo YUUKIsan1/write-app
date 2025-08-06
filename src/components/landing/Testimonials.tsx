@@ -93,7 +93,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
 
               {/* Quote */}
               <div className="relative mb-6">
-                <div className="absolute -top-2 -left-2 text-4xl text-blue-200">"</div>
+                <div className="absolute -top-2 -left-2 text-4xl text-blue-200">&ldquo;</div>
                 <p className="text-gray-700 leading-relaxed pl-6">
                   {testimonial.content}
                 </p>

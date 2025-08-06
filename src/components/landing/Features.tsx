@@ -71,7 +71,7 @@ interface FeaturesProps {
 }
 
 export default function Features({ className }: FeaturesProps) {
-  const { elementRef, isIntersecting } = useIntersectionObserver({ threshold: 0.1 })
+  const { isIntersecting } = useIntersectionObserver({ threshold: 0.1 })
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
 
