@@ -19,6 +19,9 @@ export default function Hero({ className }: HeroProps) {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // クライアントサイドでのみ実行
+    if (typeof window === 'undefined') return
+
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)

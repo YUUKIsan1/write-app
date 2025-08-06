@@ -18,6 +18,9 @@ export default function FloatingElements() {
   const [elements, setElements] = useState<FloatingElement[]>([])
 
   useEffect(() => {
+    // クライアントサイドでのみ実行
+    if (typeof window === 'undefined') return
+
     const initialElements: FloatingElement[] = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
@@ -32,6 +35,9 @@ export default function FloatingElements() {
   }, [])
 
   useEffect(() => {
+    // クライアントサイドでのみ実行
+    if (typeof window === 'undefined') return
+
     const animate = () => {
       setElements(prev => prev.map(element => {
         // Mouse attraction effect

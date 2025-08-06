@@ -15,6 +15,9 @@ export default function Header({ className }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    // クライアントサイドでのみ実行
+    if (typeof window === 'undefined') return
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }

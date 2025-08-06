@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 
 export function useSmoothScroll() {
   useEffect(() => {
+    // クライアントサイドでのみ実行
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
     const handleClick = (e: Event) => {
       const target = e.target as HTMLElement
       const link = target.closest('a[href^="#"]') as HTMLAnchorElement
