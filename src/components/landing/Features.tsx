@@ -80,40 +80,78 @@ export default function Features({ className }: FeaturesProps) {
       id="features" 
       className={`relative pt-0 pb-32 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white overflow-hidden ${className}`}
     >
-      {/* Background Effects */}
+      {/* Enhanced Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${2 + Math.random() * 3}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div ref={sectionRef} className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-8">
+        {/* Enhanced Section Header */}
+        <div className="text-center mb-12 relative">
+          {/* Glowing badge */}
           <div 
-            className={`inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full text-sm font-medium mb-4 border border-white/20 transition-all duration-1000 ${
-              isIntersecting ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-2xl rounded-full text-sm font-semibold mb-6 border border-white/30 shadow-2xl transition-all duration-1000 ${
+              isIntersecting ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-90'
             }`}
+            style={{ 
+              boxShadow: '0 0 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)' 
+            }}
           >
-            <span className="text-blue-300">✨ 革新的機能</span>
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse mr-3"></div>
+            <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent font-bold">
+              ✨ 革新的機能
+            </span>
+            <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse ml-3" style={{ animationDelay: '0.5s' }}></div>
           </div>
           
-          <AnimatedText
-            text="限界を超える6つの革新"
-            className="text-5xl md:text-6xl lg:text-7xl font-black mb-4 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent"
-            effect="wave"
-            staggerDelay={80}
-          />
+          {/* Main title with enhanced styling */}
+          <div className="relative mb-6">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 blur-3xl rounded-full"></div>
+            <AnimatedText
+              text="限界を超える6つの革新"
+              className="relative text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent"
+              effect="wave"
+              staggerDelay={60}
+            />
+          </div>
           
-          <p 
-            className={`text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 ${
+          {/* Enhanced description */}
+          <div
+            className={`max-w-4xl mx-auto transition-all duration-1000 ${
               isIntersecting ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
             }`}
-            style={{ transitionDelay: '400ms' }}
+            style={{ transitionDelay: '300ms' }}
           >
-            AI、実践、コミュニティが融合した、これまでにない学習体験で
-            <br className="hidden md:block" />
-            あなたのポテンシャルを最大限に引き出します
-          </p>
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-4">
+              <span className="text-blue-300 font-semibold">AI</span>、
+              <span className="text-purple-300 font-semibold">実践</span>、
+              <span className="text-pink-300 font-semibold">コミュニティ</span>が融合した、
+            </p>
+            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
+              これまでにない学習体験で<span className="text-yellow-300 font-semibold">あなたのポテンシャル</span>を最大限に引き出します
+            </p>
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-4 w-32 h-1 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent rounded-full"></div>
         </div>
 
         {/* Features Grid */}
