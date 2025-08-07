@@ -15,12 +15,12 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: 'LearnHub - エンジニア＆マーケター向け成長プラットフォーム',
+  title: 'TechKnot - 技術への情熱が人をつなぐ成長プラットフォーム',
   description: '学習・アウトプット・コミュニティが一つになった、プロフェッショナルのための総合学習環境。エンジニアとマーケターのスキルアップを全面支援。',
   keywords: 'エンジニア学習, マーケティング学習, プログラミング, デジタルマーケティング, スキルアップ, 転職支援, コミュニティ',
-  authors: [{ name: 'LearnHub Team' }],
-  creator: 'LearnHub',
-  publisher: 'LearnHub',
+  authors: [{ name: 'TechKnot Team' }],
+  creator: 'TechKnot',
+  publisher: 'TechKnot',
   formatDetection: {
     email: false,
     address: false,
@@ -31,16 +31,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'LearnHub - エンジニア＆マーケター向け成長プラットフォーム',
+    title: 'TechKnot - 技術への情熱が人をつなぐ成長プラットフォーム',
     description: '学習・アウトプット・コミュニティが一つになった総合学習環境',
     url: 'https://learnhub.jp',
-    siteName: 'LearnHub',
+    siteName: 'TechKnot',
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LearnHub - エンジニア＆マーケター向け成長プラットフォーム',
+    title: 'TechKnot - 技術への情熱が人をつなぐ成長プラットフォーム',
     description: '学習・アウトプット・コミュニティが一つになった総合学習環境',
   },
   robots: {

@@ -19,7 +19,7 @@ export default function CTAButtons({ isMobile = false }: CTAButtonsProps) {
           <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500 animate-pulse"></div>
           
           {/* メインボタン */}
-          <div className={`${isMobile ? "w-full justify-center" : ""} relative px-8 py-4 bg-gradient-to-r from-slate-900/80 to-gray-900/80 backdrop-blur-xl rounded-xl border border-white/20 text-white font-semibold shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-cyan-500/25 flex items-center group-hover:border-cyan-400/40`}>
+          <div className={`${isMobile ? "w-full justify-center" : ""} relative px-6 py-3 bg-gradient-to-r from-slate-900/80 to-gray-900/80 backdrop-blur-xl rounded-xl border border-white/20 text-white font-semibold shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-cyan-500/25 flex items-center group-hover:border-cyan-400/40`}>
             {/* 内側のグラデーション効果 */}
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/10 via-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
@@ -47,7 +47,7 @@ export default function CTAButtons({ isMobile = false }: CTAButtonsProps) {
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
           
           {/* メインボタン */}
-          <button className={`${isMobile ? "w-full justify-center" : ""} relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-purple-500/50 flex items-center group`}>
+          <button className={`${isMobile ? "w-full justify-center" : ""} relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-semibold shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-purple-500/50 flex items-center group`}>
             {/* プレミアムな内側効果 */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             
@@ -57,9 +57,14 @@ export default function CTAButtons({ isMobile = false }: CTAButtonsProps) {
             </div>
             
             {/* テキスト */}
-            <span className="relative z-10 group-hover:text-yellow-100 transition-colors duration-300">
-              無料で始める
-            </span>
+            <div className="relative z-10 text-center">
+              <span className="block group-hover:text-yellow-100 transition-colors duration-300 text-base font-bold">
+                無料で始める
+              </span>
+              <span className="block text-xs text-white/80 group-hover:text-yellow-200 transition-colors duration-300">
+                初期費用・月額0円
+              </span>
+            </div>
             
             {/* 動的なパーティクル効果 */}
             <div className="absolute top-1 right-2 w-1 h-1 bg-yellow-300 rounded-full opacity-0 group-hover:opacity-100 animate-bounce transition-opacity duration-300"></div>

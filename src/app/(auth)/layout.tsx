@@ -15,7 +15,7 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: 'LearnHub - 認証',
+  title: 'TechKnot - 認証',
   description: 'AI駆動の学習プラットフォーム - ログイン・アカウント作成',
 }
 

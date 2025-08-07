@@ -82,7 +82,7 @@ export default function Footer({ className }: FooterProps) {
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-2xl">
                   <span className="text-white font-black text-xl">L</span>
                 </div>
-                <span className="text-3xl font-black bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">LearnHub</span>
+                <span className="text-3xl font-black bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">TechKnot</span>
               </div>
               <p className="text-gray-300 mb-8 leading-relaxed">
                 <span className="text-cyan-300 font-semibold">10,000人以上</span>が選んだ<br />
@@ -302,7 +302,7 @@ export default function Footer({ className }: FooterProps) {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-center md:text-left mb-6 md:mb-0">
               <p className="text-gray-300 text-lg mb-2">
-                © 2024 <span className="font-bold bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">LearnHub Inc.</span> All rights reserved.
+                © 2024 <span className="font-bold bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">TechKnot Inc.</span> All rights reserved.
               </p>
               <p className="text-gray-500 text-sm">
                 🚀 限界を超える学習体験を提供し続けます
@@ -326,7 +326,7 @@ export default function Footer({ className }: FooterProps) {
           {/* 最後のスパークル */}
           <div className="text-center mt-8 pt-6 border-t border-white/10">
             <p className="text-gray-400 text-sm mb-4">
-              🌟 Made with ❤️ in Tokyo by the LearnHub Team
+              🌟 Made with ❤️ in Tokyo by the TechKnot Team
             </p>
             <div className="flex justify-center space-x-2">
               {[...Array(5)].map((_, i) => (

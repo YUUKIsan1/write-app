@@ -305,28 +305,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Emergency Contact */}
-        <div 
-          className={`mt-20 text-center transition-all duration-700 ${
-            isIntersecting ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-          }`}
-          style={{ transitionDelay: '1200ms' }}
-        >
-          <div className="bg-red-600/10 border border-red-400/30 rounded-2xl p-8">
-            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
-              <div className="text-4xl">🚨</div>
-              <div className="text-center md:text-left">
-                <h4 className="text-xl font-bold text-white mb-2">緊急サポート</h4>
-                <p className="text-gray-300">
-                  技術的な問題や緊急の相談事項がある場合：
-                  <span className="text-red-400 font-semibold ml-2">support@learnhub.ai</span>
-                  <br />
-                  通常1時間以内に対応いたします
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )

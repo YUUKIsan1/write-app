@@ -143,7 +143,7 @@ const RegisterPage = () => {
             
             <p className="text-white/80 text-sm leading-relaxed">
               30日間完全無料。クレジットカード不要。<br />
-              <span className="text-blue-300 font-semibold">今すぐ</span>AI駆動の学習革命を体験しましょう
+              <span className="text-cyan-300 font-semibold">TechKnot</span>で<span className="text-blue-300 font-semibold">技術への情熱が人をつなぐ</span>体験を
             </p>
           </div>
 

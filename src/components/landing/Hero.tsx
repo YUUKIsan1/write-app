@@ -95,18 +95,30 @@ export default function Hero({ className }: HeroProps) {
         {/* Revolutionary Main Heading */}
         <div className="mb-12">
           <AnimatedText
-            text="未来を創る"
-            className="block text-6xl md:text-8xl lg:text-9xl font-black text-white mb-4 tracking-tight"
+            text="技術への情熱が人をつなぐ"
+            className="block text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight"
             effect="wave"
-            staggerDelay={100}
+            staggerDelay={80}
           />
-          <AnimatedText
-            text="学習革命"
-            className="block text-6xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-yellow-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent mb-8 tracking-tight"
-            effect="glitch"
-            delay={1000}
-            staggerDelay={150}
-          />
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/30 via-blue-500/30 to-purple-500/30 rounded-3xl blur-2xl opacity-60 animate-pulse"></div>
+            <AnimatedText
+              text="TechKnot"
+              className="relative block text-8xl md:text-9xl lg:text-[12rem] font-black bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent mb-6 tracking-tighter text-center"
+              effect="glitch"
+              delay={1000}
+              staggerDelay={200}
+            />
+            {/* サブキャッチフレーズ */}
+            <div className="relative text-center mb-8">
+              <p className="text-lg md:text-xl text-white/90 font-medium tracking-wide">
+                学んで仕事にして、<span className="text-cyan-300 font-semibold">志を同じくする仲間</span>との出会いがここに
+              </p>
+              <p className="text-sm md:text-base text-white/70 mt-2 font-light">
+                情熱が繋ぐ最高のコミュニティで、あなたの未来を創造しよう
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Premium Subtitle */}
