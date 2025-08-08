@@ -37,7 +37,7 @@ const LoginPage = () => {
   }
 
   const handleContinue = () => {
-    router.push('/')
+    router.push('/dashboard')
   }
 
   if (step === 2) {

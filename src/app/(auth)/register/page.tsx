@@ -39,7 +39,7 @@ const RegisterPage = () => {
   }
 
   const handleContinue = () => {
-    router.push('/')
+    router.push('/onboarding')
   }
 
   if (step === 2) {
