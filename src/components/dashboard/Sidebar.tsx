@@ -12,11 +12,11 @@ interface SidebarProps {
 
 const navigationItems = [
   {
-    name: 'ダッシュボード',
-    href: '/dashboard',
-    icon: Icons.BarChart3,
+    name: 'Home',
+    href: '/',
+    icon: Icons.Home,
     gradient: 'from-blue-500 to-indigo-600',
-    description: '学習の全体像'
+    description: 'ホームページ'
   },
   {
     name: '学習コース',
@@ -26,11 +26,11 @@ const navigationItems = [
     description: 'スキルアップ'
   },
   {
-    name: 'プロジェクト',
-    href: '/dashboard/projects',
-    icon: Icons.Code,
+    name: 'スキル提供',
+    href: '/dashboard/skills',
+    icon: Icons.Award,
     gradient: 'from-purple-500 to-violet-600',
-    description: '実践で成長'
+    description: '知識を共有'
   },
   {
     name: 'コミュニティ',
@@ -40,28 +40,29 @@ const navigationItems = [
     description: '仲間とつながる'
   },
   {
-    name: 'メンタリング',
-    href: '/dashboard/mentoring',
-    icon: Icons.Brain,
+    name: 'ダッシュボード',
+    href: '/dashboard',
+    icon: Icons.BarChart3,
     gradient: 'from-orange-500 to-red-600',
-    description: '専門家と相談'
+    description: '学習の全体像'
   },
   {
-    name: 'キャリア',
-    href: '/dashboard/career',
-    icon: Icons.TrendingUp,
+    name: 'マイページ',
+    href: '/dashboard/profile',
+    icon: Icons.User,
     gradient: 'from-cyan-500 to-blue-600',
-    description: '転職サポート'
-  }
-]
-
-const bottomNavigation = [
+    description: 'プロフィール管理'
+  },
   {
     name: '設定',
     href: '/dashboard/settings',
     icon: Icons.Settings,
-    gradient: 'from-gray-500 to-slate-600'
-  },
+    gradient: 'from-gray-500 to-slate-600',
+    description: 'アプリ設定'
+  }
+]
+
+const bottomNavigation = [
   {
     name: 'ヘルプ',
     href: '/dashboard/help',
@@ -104,9 +105,11 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
               </Link>
             )}
             {!isOpen && (
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg mx-auto">
-                <span className="text-white font-bold text-lg">T</span>
-              </div>
+              <Link href="/" className="block mx-auto">
+                <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                  <span className="text-white font-bold text-lg">T</span>
+                </div>
+              </Link>
             )}
           </div>
         </div>
@@ -146,7 +149,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                     }
                     ${!isOpen && 'mx-auto'}
                   `}>
-                    <Icon className="w-5 h-5" />
+                    <Icon />
                   </div>
 
                   {isOpen && (
@@ -208,7 +211,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                   onMouseLeave={() => setHoveredItem(null)}
                 >
                   <div className="p-2">
-                    <Icon className="w-5 h-5" />
+                    <Icon />
                   </div>
                   {isOpen && (
                     <span className="ml-4 font-medium">{item.name}</span>
