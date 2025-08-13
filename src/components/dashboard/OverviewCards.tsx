@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Icons } from '@/components/ui/icons'
 
 const stats = [
@@ -55,7 +54,6 @@ const stats = [
 ]
 
 export default function OverviewCards() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -70,8 +68,6 @@ export default function OverviewCards() {
               transition-all duration-500 cursor-pointer transform hover:scale-105
               border border-gray-100 overflow-hidden
             `}
-            onMouseEnter={() => setHoveredCard(stat.id)}
-            onMouseLeave={() => setHoveredCard(null)}
           >
             {/* Background Gradient */}
             <div className={`absolute inset-0 bg-gradient-to-br ${stat.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -84,7 +80,7 @@ export default function OverviewCards() {
                   p-3 rounded-2xl bg-gradient-to-br ${stat.gradient} text-white shadow-lg 
                   group-hover:shadow-2xl transform group-hover:scale-110 transition-all duration-500
                 `}>
-                  <Icon className="w-6 h-6" />
+                  <Icon />
                 </div>
                 
                 <div className={`
@@ -95,7 +91,7 @@ export default function OverviewCards() {
                   }
                   transition-all duration-300
                 `}>
-                  <Icons.TrendingUp className="w-3 h-3 mr-1" />
+                  <Icons.TrendingUp />
                   {stat.change}
                 </div>
               </div>
@@ -129,7 +125,7 @@ export default function OverviewCards() {
 
               {/* Decorative Elements */}
               <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
-                <Icon className="w-12 h-12" />
+                <Icon />
               </div>
 
               {/* Progress Indicator */}

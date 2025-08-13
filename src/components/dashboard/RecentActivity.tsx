@@ -106,7 +106,7 @@ export default function RecentActivity() {
         <h3 className="text-lg font-bold text-gray-900 mb-4">今日の進捗</h3>
         
         <div className="space-y-4">
-          {quickStats.map((stat, index) => (
+          {quickStats.map((stat) => (
             <div key={stat.title} className="group">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700">{stat.title}</span>
@@ -176,7 +176,7 @@ export default function RecentActivity() {
                     relative p-2 rounded-xl bg-gradient-to-br ${activity.color} text-white shadow-lg
                     transform group-hover:scale-110 transition-all duration-300
                   `}>
-                    <Icon className="w-4 h-4" />
+                    <Icon />
                   </div>
 
                   {/* Content */}
@@ -210,7 +210,7 @@ export default function RecentActivity() {
                     transform translate-x-2 group-hover:translate-x-0
                     ${activity.textColor}
                   `}>
-                    <Icons.ArrowRight className="w-4 h-4" />
+                    <Icons.ArrowRight />
                   </div>
                 </div>
 

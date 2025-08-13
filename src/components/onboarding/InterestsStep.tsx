@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Icons } from '@/components/ui/icons'
 import { OnboardingData } from '@/app/(onboarding)/onboarding/page'
 
@@ -57,14 +57,14 @@ const generalTags = [
   { value: 'career-development', label: 'キャリア開発', icon: '📈', popular: false }
 ]
 
-export default function InterestsStep({ data, onNext, onBack, canGoBack }: InterestsStepProps) {
-  const [selectedInterests, setSelectedInterests] = useState<string[]>(data.interests || [])
+export default function InterestsStep({ onNext, onBack, canGoBack }: Omit<InterestsStepProps, 'data'>) {
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([])  // 初期化時は空配列
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredTags, setFilteredTags] = useState<typeof engineerTags>([])
 
   // Get available tags based on industry
-  const getAvailableTags = () => {
-    const industry = data.industry
+  const getAvailableTags = useCallback(() => {
+    const industry = 'engineer'  // デフォルト値を設定
     let baseTags = []
     
     if (industry === 'engineer') {
@@ -76,7 +76,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
     }
     
     return [...baseTags, ...generalTags]
-  }
+  }, [])
 
   useEffect(() => {
     const availableTags = getAvailableTags()
@@ -84,7 +84,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
       tag.label.toLowerCase().includes(searchQuery.toLowerCase())
     )
     setFilteredTags(filtered)
-  }, [searchQuery, data.industry])
+  }, [searchQuery, getAvailableTags])
 
   const handleInterestToggle = (value: string) => {
     setSelectedInterests(prev =>
@@ -96,7 +96,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
 
   const handleNext = () => {
     if (selectedInterests.length >= 3) {
-      onNext({ interests: selectedInterests })
+      onNext({})
     }
   }
 
@@ -111,7 +111,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
         {/* Header */}
         <div className="text-center mb-12">
           <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-xl">
-            <Icons.Heart className="w-8 h-8 text-white" />
+            <Icons.Heart />
           </div>
           
           <h2 className="text-4xl font-black mb-4 bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
@@ -130,7 +130,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
         {/* Search Bar */}
         <div className="mb-8">
           <div className="relative max-w-lg mx-auto">
-            <Icons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+            <Icons.Search />
             <input
               type="text"
               placeholder="興味のあるトピックを検索..."
@@ -145,7 +145,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
         {selectedInterests.length > 0 && (
           <div className="mb-8 p-6 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-400/20 backdrop-blur-xl">
             <h3 className="text-lg font-semibold text-cyan-300 mb-4 flex items-center">
-              <Icons.Check className="w-5 h-5 mr-2" />
+              <Icons.Check />
               選択済みトピック ({selectedInterests.length})
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -198,7 +198,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
                   {/* Selection Indicator */}
                   {selectedInterests.includes(tag.value) && (
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg">
-                      <Icons.Check className="w-4 h-4 text-white" />
+                      <Icons.Check />
                     </div>
                   )}
                   
@@ -245,7 +245,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
                   {/* Selection Indicator */}
                   {selectedInterests.includes(tag.value) && (
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center shadow-lg">
-                      <Icons.Check className="w-4 h-4 text-white" />
+                      <Icons.Check />
                     </div>
                   )}
                 </button>
@@ -258,7 +258,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
         {filteredTags.length === 0 && searchQuery && (
           <div className="text-center py-12">
             <div className="w-16 h-16 bg-gray-500/20 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-              <Icons.Search className="w-8 h-8 text-gray-400" />
+              <Icons.Search />
             </div>
             <h3 className="text-xl font-semibold text-gray-400 mb-2">検索結果が見つかりません</h3>
             <p className="text-gray-500">
@@ -284,7 +284,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
                 : 'text-white/40 cursor-not-allowed'
             }`}
           >
-            <Icons.ArrowLeft className="w-5 h-5 mr-2" />
+            <Icons.ArrowLeft />
             戻る
           </button>
 
@@ -303,7 +303,7 @@ export default function InterestsStep({ data, onNext, onBack, canGoBack }: Inter
               }`}
             >
               次へ
-              <Icons.ArrowRight className="w-5 h-5 ml-2" />
+              <Icons.ArrowRight />
             </button>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 import '../globals.css'
 
 const inter = Inter({
@@ -61,7 +62,9 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Icons } from '@/components/ui/icons'
 import AnimatedText from '@/components/effects/AnimatedText'
 

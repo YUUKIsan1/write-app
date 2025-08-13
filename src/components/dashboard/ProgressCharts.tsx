@@ -98,7 +98,7 @@ export default function ProgressCharts() {
         {/* Chart */}
         <div className="space-y-4">
           <div className="flex items-end justify-between h-40 space-x-3">
-            {weeklyData.map((data, index) => (
+            {weeklyData.map((data) => (
               <div key={data.day} className="flex-1 flex flex-col items-center">
                 <div className="flex flex-col items-center space-y-2 mb-2">
                   <div className="text-xs font-semibold text-gray-600">{data.completed}</div>
@@ -138,7 +138,7 @@ export default function ProgressCharts() {
             <h3 className="text-xl font-bold text-gray-900">スキル進捗</h3>
             <p className="text-sm text-gray-500">各技術領域の習熟度</p>
           </div>
-          <Icons.TrendingUp className="w-5 h-5 text-green-500" />
+          <Icons.TrendingUp />
         </div>
 
         <div className="space-y-4">

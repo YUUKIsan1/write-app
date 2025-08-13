@@ -4,16 +4,20 @@ import React, { useState, FormEvent } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Icons } from '@/components/ui/icons'
-import MagneticButton from '@/components/effects/MagneticButton'
 import AnimatedText from '@/components/effects/AnimatedText'
+import GoogleLoginButton from './components/GoogleLoginButton'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [step, setStep] = useState(1)
   const router = useRouter()
+
+  // Google認証エラーハンドラー
+  const handleGoogleError = (errorMessage: string) => {
+    setError(errorMessage)
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -30,77 +34,36 @@ const LoginPage = () => {
     // ログイン処理のシミュレーション
     setTimeout(() => {
       if (email && password) {
-        setStep(2) // 成功画面に移行
+        // 登録されたユーザーかどうかをチェック
+        const registeredUser = JSON.parse(localStorage.getItem('registeredUser') || '{}')
+        const isRegisteredUser = registeredUser.email === email
+        
+        // ユーザー情報を保存
+        localStorage.setItem('user', JSON.stringify({
+          email: email,
+          name: registeredUser.name || 'ユーザー',
+          isFirstLogin: isRegisteredUser && registeredUser.isFirstLogin
+        }))
+        localStorage.setItem('authToken', 'mock-token')
+        
+        // 直接遷移ロジック
+        const user = {
+          email: email,
+          name: registeredUser.name || 'ユーザー',
+          isFirstLogin: isRegisteredUser && registeredUser.isFirstLogin
+        }
+        const onboardingCompleted = localStorage.getItem('onboardingCompleted') === 'true'
+        
+        if (user.isFirstLogin && !onboardingCompleted) {
+          router.push('/onboarding')
+        } else {
+          router.push('/')
+        }
       }
       setIsLoading(false)
     }, 2000)
   }
 
-  const handleContinue = () => {
-    router.push('/dashboard')
-  }
-
-  if (step === 2) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-emerald-900 flex items-center justify-center p-6">
-        <div className="max-w-md w-full relative">
-          {/* Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-emerald-600/20 rounded-3xl blur-3xl"></div>
-          
-          <div className="relative bg-black/40 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 text-center shadow-2xl">
-            {/* Success Animation */}
-            <div className="mb-8">
-              <div className="w-20 h-20 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full mx-auto mb-6 flex items-center justify-center shadow-xl animate-pulse">
-                <Icons.Check />
-              </div>
-              
-              <AnimatedText
-                text="おかえりなさい！"
-                className="text-3xl font-black mb-4 bg-gradient-to-r from-emerald-300 via-green-300 to-blue-300 bg-clip-text text-transparent"
-                effect="wave"
-                staggerDelay={80}
-              />
-              
-              <p className="text-white/80 mb-2">
-                ログインが完了しました
-              </p>
-              <p className="text-white/60 text-sm mb-8">
-                引き続き、あなたの学習の旅を続けましょう。<br />
-                最新のプロジェクトとコミュニティが待っています。
-              </p>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <div className="text-2xl font-bold text-emerald-400">7</div>
-                <div className="text-white/60 text-sm">未読通知</div>
-              </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <div className="text-2xl font-bold text-blue-400">3</div>
-                <div className="text-white/60 text-sm">新しいプロジェクト</div>
-              </div>
-            </div>
-
-            <MagneticButton
-              variant="gradient"
-              size="lg"
-              className="w-full mb-4"
-              onClick={handleContinue}
-              strength={0.3}
-            >
-              <Icons.ArrowRight />
-              <span className="ml-2">ダッシュボードへ</span>
-            </MagneticButton>
-
-            <p className="text-white/50 text-xs">
-              最後のログイン: 今日 {new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 flex items-center justify-center p-6">
@@ -242,6 +205,12 @@ const LoginPage = () => {
               </span>
             </div>
           </div>
+
+          {/* Google Sign In Button */}
+          <GoogleLoginButton 
+            className="mb-6 bg-white hover:bg-gray-50 text-gray-900 px-6 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105 border border-gray-300"
+            onError={handleGoogleError}
+          />
 
           {/* Register Link */}
           <div className="text-center space-y-4">

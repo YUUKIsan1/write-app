@@ -49,10 +49,10 @@ const marketerGoals = [
 
 export default function UserInfoStep({ data, onNext, onBack, canGoBack }: UserInfoStepProps) {
   const [age, setAge] = useState(data.age || '')
-  const [industry, setIndustry] = useState(data.industry || '')
-  const [customIndustry, setCustomIndustry] = useState(data.customIndustry || '')
-  const [purpose, setPurpose] = useState<string[]>(data.purpose || [])
-  const [goals, setGoals] = useState<string[]>(data.goals || [])
+  const [industry, setIndustry] = useState('')
+  const [customIndustry, setCustomIndustry] = useState('')
+  const [purpose, setPurpose] = useState<string[]>([])
+  const [goals, setGoals] = useState<string[]>([])
 
   const handlePurposeToggle = (value: string) => {
     setPurpose(prev => 
@@ -72,13 +72,7 @@ export default function UserInfoStep({ data, onNext, onBack, canGoBack }: UserIn
 
   const handleNext = () => {
     if (age && industry && purpose.length > 0 && (goals.length > 0 || industry === 'other')) {
-      onNext({
-        age,
-        industry,
-        customIndustry: industry === 'other' ? customIndustry : '',
-        purpose,
-        goals
-      })
+      onNext({ age })
     }
   }
 
@@ -95,7 +89,7 @@ export default function UserInfoStep({ data, onNext, onBack, canGoBack }: UserIn
         {/* Header */}
         <div className="text-center mb-12">
           <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-xl">
-            <Icons.User className="w-8 h-8 text-white" />
+            <Icons.User />
           </div>
           
           <h2 className="text-4xl font-black mb-4 bg-gradient-to-r from-purple-300 via-pink-300 to-indigo-300 bg-clip-text text-transparent">
@@ -227,7 +221,7 @@ export default function UserInfoStep({ data, onNext, onBack, canGoBack }: UserIn
                           : 'border-white/40'
                       }`}>
                         {goals.includes(goal.value) && (
-                          <Icons.Check className="w-2 h-2 text-white" />
+                          <Icons.Check />
                         )}
                       </div>
                       <span>{goal.label}</span>
@@ -250,7 +244,7 @@ export default function UserInfoStep({ data, onNext, onBack, canGoBack }: UserIn
                 : 'text-white/40 cursor-not-allowed'
             }`}
           >
-            <Icons.ArrowLeft className="w-5 h-5 mr-2" />
+            <Icons.ArrowLeft />
             戻る
           </button>
 
@@ -264,7 +258,7 @@ export default function UserInfoStep({ data, onNext, onBack, canGoBack }: UserIn
             }`}
           >
             次へ
-            <Icons.ArrowRight className="w-5 h-5 ml-2" />
+            <Icons.ArrowRight />
           </button>
         </div>
       </div>

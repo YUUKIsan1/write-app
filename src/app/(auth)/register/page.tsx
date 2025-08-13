@@ -32,6 +32,12 @@ const RegisterPage = () => {
     // 新規登録処理のシミュレーション
     setTimeout(() => {
       if (email && password && name) {
+        // 新規ユーザーとして保存（初回ログインフラグを設定）
+        localStorage.setItem('registeredUser', JSON.stringify({
+          email: email,
+          name: name,
+          isFirstLogin: true
+        }))
         setStep(2) // 成功画面に移行
       }
       setIsLoading(false)
@@ -39,7 +45,7 @@ const RegisterPage = () => {
   }
 
   const handleContinue = () => {
-    router.push('/onboarding')
+    router.push('/login')
   }
 
   if (step === 2) {
@@ -102,7 +108,7 @@ const RegisterPage = () => {
               strength={0.3}
             >
               <Icons.ArrowRight />
-              <span className="ml-2">学習を開始</span>
+              <span className="ml-2">ログインページへ</span>
             </MagneticButton>
 
             <p className="text-white/50 text-xs">

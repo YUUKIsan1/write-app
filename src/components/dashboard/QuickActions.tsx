@@ -153,7 +153,7 @@ export default function QuickActions() {
                     group-hover:shadow-2xl transform group-hover:scale-110 transition-all duration-500
                     ${action.hoverGradient}
                   `}>
-                    <Icon className="w-6 h-6" />
+                    <Icon />
                   </div>
 
                   {/* Title and Description */}
@@ -180,7 +180,7 @@ export default function QuickActions() {
                       opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0
                       transition-all duration-300 text-gray-400 group-hover:text-gray-600
                     `}>
-                      <Icons.ArrowRight className="w-4 h-4" />
+                      <Icons.ArrowRight />
                     </div>
                   </div>
                 </div>

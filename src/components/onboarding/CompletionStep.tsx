@@ -43,19 +43,13 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
       '30s-late': '30代後半～'
     }
 
-    const industryMap: { [key: string]: string } = {
-      'engineer': 'エンジニア',
-      'marketer': 'マーケター',
-      'designer': 'デザイナー',
-      'other': data.customIndustry || 'その他'
-    }
 
     return {
       age: ageMap[data.age || ''] || '',
-      industry: industryMap[data.industry || ''] || '',
+      industry: '',
       purposeCount: data.purpose?.length || 0,
       goalsCount: data.goals?.length || 0,
-      interestsCount: data.interests?.length || 0
+      interestsCount: 0
     }
   }
 
@@ -72,7 +66,7 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
               <div className="absolute inset-0 border-4 border-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 rounded-full animate-spin opacity-30"></div>
               <div className="absolute inset-2 border-4 border-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full animate-spin opacity-50" style={{ animationDirection: 'reverse', animationDuration: '3s' }}></div>
               <div className="absolute inset-4 bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-500 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50">
-                <Icons.Check className="w-12 h-12 text-white animate-pulse" />
+                <Icons.Check />
               </div>
             </div>
             
@@ -124,7 +118,7 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
                   <span className="text-white/70 flex items-center">
-                    <Icons.User className="w-4 h-4 mr-2" />
+                    <Icons.User />
                     年代
                   </span>
                   <span className="text-white font-semibold">{summary.age}</span>
@@ -132,7 +126,7 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
                 
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
                   <span className="text-white/70 flex items-center">
-                    <Icons.Briefcase className="w-4 h-4 mr-2" />
+                    <Icons.Briefcase />
                     業界
                   </span>
                   <span className="text-white font-semibold">{summary.industry}</span>
@@ -142,7 +136,7 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
                   <span className="text-white/70 flex items-center">
-                    <Icons.Target className="w-4 h-4 mr-2" />
+                    <Icons.Target />
                     選択した目的
                   </span>
                   <span className="text-cyan-300 font-semibold">{summary.purposeCount}個</span>
@@ -150,7 +144,7 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
                 
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
                   <span className="text-white/70 flex items-center">
-                    <Icons.Heart className="w-4 h-4 mr-2" />
+                    <Icons.Heart />
                     興味のあるトピック
                   </span>
                   <span className="text-emerald-300 font-semibold">{summary.interestsCount}個</span>
@@ -197,7 +191,7 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
                   style={{ animationDelay: `${1200 + index * 200}ms` }}
                 >
                   <div className={`w-12 h-12 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg`}>
-                    <Icon className="w-6 h-6 text-white" />
+                    <Icon />
                   </div>
                   
                   <h5 className="text-lg font-bold text-white mb-2">{feature.title}</h5>
@@ -220,9 +214,9 @@ export default function CompletionStep({ data, onComplete }: CompletionStepProps
             
             {/* Content */}
             <div className="relative flex items-center">
-              <Icons.Rocket className="w-6 h-6 mr-3 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
+              <Icons.Rocket />
               <span>ダッシュボードへ進む</span>
-              <Icons.ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+              <Icons.ArrowRight />
               
               {/* Sparkle Effects */}
               <div className="absolute top-1 right-1 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 animate-ping" />

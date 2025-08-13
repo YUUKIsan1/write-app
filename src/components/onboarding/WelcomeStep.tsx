@@ -109,7 +109,7 @@ export default function WelcomeStep({ onNext }: WelcomeStepProps) {
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
                   <div className={`w-12 h-12 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg group-hover:shadow-2xl transition-all duration-300`}>
-                    <Icon className="w-6 h-6 text-white" />
+                    <Icon />
                   </div>
                   
                   <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
@@ -132,7 +132,7 @@ export default function WelcomeStep({ onNext }: WelcomeStepProps) {
             {/* Content */}
             <div className="relative flex items-center">
               <span className="mr-3">始めましょう</span>
-              <Icons.ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+              <Icons.ArrowRight />
               
               {/* Sparkle Effect */}
               <div className="absolute top-1 right-1 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 animate-ping" />

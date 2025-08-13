@@ -1,12 +1,37 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { NextRequest, NextResponse } from "next/server"
 
-export default clerkMiddleware();
+// シンプルな認証チェック用のミドルウェア（Next-auth無効化中）
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  
+  // 認証不要なパス
+  const publicPaths = [
+    '/login',
+    '/register', 
+    '/resetpassword',
+    '/api',
+    '/',
+    '/landing'
+  ]
+  
+  // パブリックパスは通す
+  if (publicPaths.some(path => pathname.startsWith(path))) {
+    return NextResponse.next()
+  }
+  
+  // 現在は全てのルートを通す（認証は後で実装）
+  return NextResponse.next()
+}
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
+    /*
+     * 以下のパスで始まるものを除く全てのパスにマッチ:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
-};
+}
