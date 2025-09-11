@@ -33,7 +33,7 @@ export default function Dashboard() {
                 <div>
                   <h1 className="text-3xl font-black mb-2">おかえりなさい！ 🎉</h1>
                   <p className="text-blue-100 text-lg">
-                    今日も<span className="text-yellow-300 font-semibold">TechKnot</span>で新しい知識を身につけましょう
+                    今日も<span className="text-yellow-300 font-semibold">StudyTech</span>で新しい知識を身につけましょう
                   </p>
                 </div>
                 <div className="hidden md:block">

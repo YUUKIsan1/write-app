@@ -15,8 +15,8 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: 'TechKnot Dashboard - 学習管理',
-  description: '技術への情熱が人をつなぐ学習ダッシュボード',
+  title: 'StudyTech Dashboard - 学習管理',
+  description: '学習の進捗と活動を一目で把握',
 }
 
 export default function DashboardLayout({
