@@ -7,9 +7,19 @@ import { Icons } from '@/components/ui/icons'
 import AnimatedText from '@/components/effects/AnimatedText'
 import GoogleLoginButton from './components/GoogleLoginButton'
 
+// ⚠️ Demo-only hash helper (base64). Never store plaintext in production.
+const hash = (str: string) => {
+  try {
+    return typeof window !== 'undefined' ? btoa(str) : str
+  } catch {
+    return str
+  }
+}
+
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
@@ -33,32 +43,29 @@ const LoginPage = () => {
 
     // ログイン処理のシミュレーション
     setTimeout(() => {
-      if (email && password) {
-        // 登録されたユーザーかどうかをチェック
-        const registeredUser = JSON.parse(localStorage.getItem('registeredUser') || '{}')
-        const isRegisteredUser = registeredUser.email === email
-        
+      const registeredUser = JSON.parse(localStorage.getItem('registeredUser') || '{}')
+
+      // 入力情報と保存データを比較
+      if (
+        registeredUser.email === email &&
+        (registeredUser.passwordHash
+          ? registeredUser.passwordHash === hash(password)
+          : true)
+      ) {
         // ユーザー情報を保存
-        localStorage.setItem('user', JSON.stringify({
-          email: email,
-          name: registeredUser.name || 'ユーザー',
-          isFirstLogin: isRegisteredUser && registeredUser.isFirstLogin
-        }))
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            email,
+            name: registeredUser.name || 'ユーザー',
+          }),
+        )
         localStorage.setItem('authToken', 'mock-token')
-        
-        // 直接遷移ロジック
-        const user = {
-          email: email,
-          name: registeredUser.name || 'ユーザー',
-          isFirstLogin: isRegisteredUser && registeredUser.isFirstLogin
-        }
-        const onboardingCompleted = localStorage.getItem('onboardingCompleted') === 'true'
-        
-        if (user.isFirstLogin && !onboardingCompleted) {
-          router.push('/onboarding')
-        } else {
-          router.push('/')
-        }
+
+        // Home へ遷移
+        router.push('/')
+      } else {
+        setError('メールアドレスまたはパスワードが正しくありません')
       }
       setIsLoading(false)
     }, 2000)
@@ -130,13 +137,29 @@ const LoginPage = () => {
                   </svg>
                 </div>
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="パスワード"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="relative w-full pl-12 pr-4 py-4 border border-white/20 rounded-xl bg-black/30 text-white transition-all duration-300 backdrop-blur-sm placeholder-white/50 focus:outline-none focus:border-indigo-400 focus:bg-black/50 focus:shadow-lg focus:shadow-indigo-400/25"
                 />
+                {/* Toggle visibility */}
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 text-white/60 hover:text-white transition-colors"
+                >
+                  {showPassword ? (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.05.164-2.061.467-3.012m3.11-3.11A9.962 9.962 0 0112 3c5.523 0 10 4.477 10 10 0 1.05-.164 2.06-.468 3.012M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.271 4.271l15.458 15.458M9.88 9.88a3 3 0 104.242 4.242M6.51 6.508A9.977 9.977 0 002 12c0 5.523 4.477 10 10 10a9.977 9.977 0 005.492-1.51M17.49 17.492A9.977 9.977 0 0022 12c0-5.523-4.477-10-10-10a9.977 9.977 0 00-5.492 1.51" />
+                    </svg>
+                  )}
+                </button>
               </div>
             </div>
 

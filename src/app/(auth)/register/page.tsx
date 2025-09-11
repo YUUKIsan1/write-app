@@ -7,6 +7,18 @@ import { Icons } from '@/components/ui/icons'
 import MagneticButton from '@/components/effects/MagneticButton'
 import AnimatedText from '@/components/effects/AnimatedText'
 
+// ⚠️  Demo-only helper: VERY weak “hash” (base64 encode) for mock storage.
+//    In real production code, never store passwords client-side and always
+//    hash on the server with a strong algorithm (e.g. bcrypt, argon2).
+const hash = (str: string) => {
+  try {
+    return typeof window !== 'undefined' ? btoa(str) : str
+  } catch {
+    // btoa may throw for unicode; fallback to original (demo only)
+    return str
+  }
+}
+
 const RegisterPage = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -33,11 +45,16 @@ const RegisterPage = () => {
     setTimeout(() => {
       if (email && password && name) {
         // 新規ユーザーとして保存（初回ログインフラグを設定）
-        localStorage.setItem('registeredUser', JSON.stringify({
-          email: email,
-          name: name,
-          isFirstLogin: true
-        }))
+        localStorage.setItem(
+          'registeredUser',
+          JSON.stringify({
+            email,
+            name,
+            // 画面内ログイン用にパスワードハッシュも保持（モック実装）
+            passwordHash: hash(password),
+            isFirstLogin: true,
+          }),
+        )
         setStep(2) // 成功画面に移行
       }
       setIsLoading(false)
