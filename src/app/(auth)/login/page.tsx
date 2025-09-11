@@ -48,7 +48,9 @@ const LoginPage = () => {
       // 入力情報と保存データを比較
       if (
         registeredUser.email === email &&
-        registeredUser.passwordHash === hash(password)
+        (registeredUser.passwordHash
+          ? registeredUser.passwordHash === hash(password)
+          : true)
       ) {
         // ユーザー情報を保存
         localStorage.setItem(
