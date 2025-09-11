@@ -20,10 +20,10 @@ const navItems: NavItem[] = [
     href: '/'
   },
   {
-    id: 'courses',
-    label: 'コース',
-    icon: 'BookOpen',
-    href: '/courses'
+    id: 'dashboard',
+    label: 'ダッシュボード',
+    icon: 'BarChart3',
+    href: '/dashboard'
   },
   {
     id: 'create',
@@ -32,14 +32,8 @@ const navItems: NavItem[] = [
     href: '/create'
   },
   {
-    id: 'community',
-    label: 'コミュニティ',
-    icon: 'Users',
-    href: '/community'
-  },
-  {
-    id: 'profile',
-    label: 'プロフィール',
+    id: 'mypage',
+    label: 'マイページ',
     icon: 'User',
     href: '/profile'
   }

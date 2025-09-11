@@ -16,28 +16,21 @@ const navigationItems = [
     href: '/',
     icon: Icons.Home,
     gradient: 'from-blue-500 to-indigo-600',
-    description: 'ホームページ'
-  },
-  {
-    name: '学習・スキルマーケット',
-    href: '/courses',
-    icon: Icons.Award,
-    gradient: 'from-green-500 to-emerald-600',
-    description: '学習とスキル提供の統合プラットフォーム'
-  },
-  {
-    name: 'コミュニティ',
-    href: '/community',
-    icon: Icons.Users,
-    gradient: 'from-pink-500 to-rose-600',
-    description: 'トークとコンテンツで仲間とつながる'
+    description: 'ホーム'
   },
   {
     name: 'ダッシュボード',
     href: '/dashboard',
     icon: Icons.BarChart3,
-    gradient: 'from-orange-500 to-red-600',
+    gradient: 'from-purple-500 to-pink-600',
     description: '学習の全体像'
+  },
+  {
+    name: '投稿',
+    href: '/create',
+    icon: Icons.Plus,
+    gradient: 'from-green-500 to-emerald-600',
+    description: 'コンテンツを作成'
   },
   {
     name: 'マイページ',
@@ -45,13 +38,6 @@ const navigationItems = [
     icon: Icons.User,
     gradient: 'from-cyan-500 to-blue-600',
     description: 'プロフィール管理'
-  },
-  {
-    name: '設定',
-    href: '/settings',
-    icon: Icons.Settings,
-    gradient: 'from-gray-500 to-slate-600',
-    description: 'アプリ設定'
   }
 ]
 
@@ -86,17 +72,17 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
             {isOpen && (
               <Link href="/" className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-white font-bold text-lg">T</span>
+                  <span className="text-white font-bold text-lg">S</span>
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  TechKnot
+                  StudyTech
                 </span>
               </Link>
             )}
             {!isOpen && (
               <Link href="/" className="block mx-auto">
                 <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                  <span className="text-white font-bold text-lg">T</span>
+                  <span className="text-white font-bold text-lg">S</span>
                 </div>
               </Link>
             )}
