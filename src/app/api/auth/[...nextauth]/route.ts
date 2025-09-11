@@ -1,7 +1,13 @@
-import NextAuth from "next-auth"
+import NextAuth, { type NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
-const handler = NextAuth({
+// ----------------------------- //
+// NextAuth configuration
+// ----------------------------- //
+export const authOptions: NextAuthOptions = {
+  // Allow NextAuth to trust the incoming host header. Useful for dev tunnels /
+  // reverse proxies (e.g., Vercel, ngrok) to avoid callback URL mismatch issues.
+  trustHost: true,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -46,6 +52,8 @@ const handler = NextAuth({
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-})
+}
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST, authOptions }
