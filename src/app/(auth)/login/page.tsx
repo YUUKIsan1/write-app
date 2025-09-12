@@ -105,6 +105,8 @@ const LoginPage = () => {
             </p>
           </div>
 
+          {/* メール/パスワードでログイン */}
+          <h2 className="text-white/90 font-semibold mb-3">メール/パスワードでログイン</h2>
           {/* Login Form */}
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Email Input */}
